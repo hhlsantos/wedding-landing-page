@@ -156,4 +156,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 6000);
         }
     });
+    // --- 6. Background Music Control ---
+    const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    let isMusicPlaying = !bgMusic.paused;
+    let hasAttemptedAutoplay = false;
+
+    // Sync UI state with audio state
+    bgMusic.addEventListener('play', () => {
+        isMusicPlaying = true;
+        musicBtn.classList.add('playing');
+        hasAttemptedAutoplay = true;
+    });
+
+    bgMusic.addEventListener('pause', () => {
+        isMusicPlaying = false;
+        musicBtn.classList.remove('playing');
+    });
+
+    // Check if autoplay already worked on load
+    if (isMusicPlaying) {
+        musicBtn.classList.add('playing');
+        hasAttemptedAutoplay = true;
+    }
+
+    // Toggle Play/Pause on button click
+    musicBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+            bgMusic.pause();
+        } else {
+            bgMusic.play().catch(e => console.error("Error playing audio:", e));
+        }
+        hasAttemptedAutoplay = true; // User manually interacted
+    });
+
+    // Fallback: Attempt to auto-play on first user interaction if blocked
+    const tryAutoplay = () => {
+        if (!hasAttemptedAutoplay && !isMusicPlaying) {
+            bgMusic.play().then(() => {
+                // UI state will be updated by the 'play' event listener
+                // Remove listeners once successfully played
+                document.removeEventListener('click', tryAutoplay);
+                document.removeEventListener('scroll', tryAutoplay);
+                document.removeEventListener('touchstart', tryAutoplay);
+            }).catch(e => {
+                // Autoplay blocked, wait for next interaction
+                console.log("Autoplay waiting for user interaction");
+            });
+        }
+    };
+
+    // Listen to various interactions to trigger the autoplay attempt
+    document.addEventListener('click', tryAutoplay, { once: true });
+    document.addEventListener('scroll', tryAutoplay, { once: true });
+    document.addEventListener('touchstart', tryAutoplay, { once: true });
 });
