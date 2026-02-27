@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Henrique & Tairine - Nosso Casamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="nav-content">
+        <h1 class="logo">H & T</h1>
+        <ul class="nav-links">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="#detalhes">Detalhes</a></li>
+          <li><a href="#presentes">Presentes</a></li>
+          <li><a href="#rsvp">Presença</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content fade-in">
+        <h2 class="pre-title">Celebre conosco o casamento de</h2>
+        <h1 class="title">Henrique & Tairine</h1>
+        <p class="date">20 de Março de 2027</p>
+        <div class="countdown" id="countdown">
+          <div class="time-box">
+            <span id="days">00</span>
+            <p>Dias</p>
+          </div>
+          <div class="time-box">
+            <span id="hours">00</span>
+            <p>Horas</p>
+          </div>
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <p>Minutos</p>
+          </div>
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <p>Segundos</p>
+          </div>
+        </div>
+        <a href="#rsvp" class="btn-primary">Confirmar Presença</a>
+      </div>
+    </section>
+
+    <section id="historia" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Nossa História</h2>
+        <div class="story-content reveal">
+          <p>
+            Tudo começou de uma forma inesperada, mas o destino já havia traçado o nosso caminho. Desde o primeiro
+            olhar, sabíamos que algo especial estava nascendo.
+          </p>
+          <p>
+            Após anos de companheirismo, risadas e muito amor, decidimos dar o próximo passo e unir nossas vidas para
+            sempre. Estamos muito felizes em compartilhar este momento tão especial com nossa família e amigos queridos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="detalhes" class="section bg-olive">
+      <div class="container">
+        <h2 class="section-title text-light reveal">Onde e Quando</h2>
+        <div class="details-grid">
+          <div class="detail-card reveal">
+            <h3>A Cerimônia</h3>
+            <p class="time">16:00</p>
+            <p class="location">Igreja Matriz [Nome da Igreja]<br />Rua das Flores, 123 - Centro</p>
+            <a href="#" class="link" target="_blank">Ver no Mapa</a>
+          </div>
+          <div class="detail-card reveal delay-1">
+            <h3>A Recepção</h3>
+            <p class="time">18:00</p>
+            <p class="location">Espaço [Nome do Local]<br />Av. das Árvores, 456 - Jardim Botânico</p>
+            <a href="#" class="link" target="_blank">Ver no Mapa</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentes" class="section">
+      <div class="container center">
+        <h2 class="section-title reveal">Lista de Presentes</h2>
+        <p class="reveal">
+          O maior presente é a sua presença neste dia tão especial. No entanto, se desejar nos presentear, preparamos
+          algumas opções para nos ajudar a construir nosso lar e nossa lua de mel.
+        </p>
+        <div class="gift-actions reveal">
+          <a href="#" class="btn-outline">Lista Virtual (iCasei)</a>
+          <button class="btn-outline" onclick="alert('Chave PIX: celular 11999999999')">Presentear com PIX</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="section bg-olive">
+      <div class="container">
+        <h2 class="section-title text-light reveal">Confirme sua Presença</h2>
+        <p class="text-light text-center reveal">Por favor, confirme sua presença até o dia 20 de Fevereiro de 2027.</p>
+        <form class="rsvp-form reveal" id="rsvpForm" action="https://formspree.io/f/xzdaojoy" method="POST">
+          <div class="form-group">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" name="nome" required placeholder="Digite seu nome" />
+          </div>
+          <div class="form-group">
+            <label for="attending">Você irá comparecer?</label>
+            <select id="attending" name="presenca" required>
+              <option value="">Selecione...</option>
+              <option value="yes">Sim, com certeza!</option>
+              <option value="no">Infelizmente não poderei.</option>
+            </select>
+          </div>
+          <div class="form-group" id="guests-group" style="display: none">
+            <label for="guests">Número de Acompanhantes</label>
+            <input type="number" id="guests" name="acompanhantes" min="0" max="5" value="0" />
+          </div>
+          <p id="formMessage" class="form-message"></p>
+          <button type="submit" id="submitBtn" class="btn-primary w-100">Enviar Confirmação</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container center">
+        <h2 class="logo">H & T</h2>
+        <p>Feito com amor para o nosso grande dia.</p>
+        <p class="copy">&copy; 2027 Henrique & Tairine. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
